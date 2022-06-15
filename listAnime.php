@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 require 'functions.php';
 
 $listAnime = mysqli_query($conn, "SELECT * FROM listAnime");
@@ -8,14 +8,14 @@ $listAnime = mysqli_query($conn, "SELECT * FROM listAnime");
 
 if ( isset($_POST["tambah"])) {
 
-    var_dump($_POST);
+  
     
        // cek keberhasilan query
   if (tambah2($_POST) > 0 ) {
       echo "<script> 
       alert('data berhasil ditambahkan');
-      document.location.href = listAnime.php; 
        </script>";
+        header("Refresh:0");
   } else {
     echo "<script> 
     alert('data gagal ditambahkan');
@@ -78,13 +78,12 @@ if ( isset($_POST["tambah"])) {
                 <li><a href="listAnime.php">MyAnime</a></li>
                 <li><a href="product.php">Product</a></li>
                 <li><a href="About.php">About</a></li>
-                <li>
-                    <?php if (!isset($_SESSION["login"])) { ?>
-                        <a href="login2.php">login</a>
-                    <?php } else { ?>
-                        <a href="logOut.php">Log Out</a>
+                <?php if (!isset($_SESSION["login"])) { ?>
+                <li><a href="login2.php">login</a></li>
+                        <?php } else { ?>
+                            <li><a href="crud_product.php">Add Product</a></li>  
+                            <li><a href="logOut.php">Log Out</a></li>    
                     <?php } ?>
-                </li>
             </ul>
         </nav>
 
@@ -119,7 +118,7 @@ if ( isset($_POST["tambah"])) {
               <?php foreach ( $listAnime as $row)  : ?>
 
            <div class="service">
-                <h1><?= $row['nama'] ?></h1>
+                <h5><?= $row['nama'] ?></h5>
             </div>
 
             <?php endforeach; ?>

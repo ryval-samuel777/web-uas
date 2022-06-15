@@ -42,13 +42,12 @@ $produk = mysqli_query($conn, "SELECT * FROM product");
                 <li><a href="listAnime.php">MyAnime</a></li>
                 <li><a href="product.php">Product</a></li>
                 <li><a href="About.php">About</a></li>
-                <li>
-                    <?php if (!isset($_SESSION["login"])) { ?>
-                        <a href="login2.php">login</a>
-                    <?php } else { ?>
-                        <a href="logOut.php">Log Out</a>
+                <?php if (!isset($_SESSION["login"])) { ?>
+                <li><a href="login2.php">login</a></li>
+                        <?php } else { ?>
+                            <li><a href="crud_product.php">Add Product</a></li>  
+                            <li><a href="logOut.php">Log Out</a></li>    
                     <?php } ?>
-                </li>
             </ul>
         </nav>
 

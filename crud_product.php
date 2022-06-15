@@ -1,5 +1,12 @@
 <?php 
 
+session_start();
+
+if ( !isset($_SESSION["login"])) {
+    header("Location: login2.php");
+    exit;
+}
+
 require 'functions.php';
 
 
@@ -14,8 +21,8 @@ if ( isset($_POST["submit"])) {
   if (tambah($_POST) > 0 ) {
       echo "<script> 
       alert('data berhasil ditambahkan');
-      document.location.href = crud_product.php; 
        </script>";
+       header("Refresh:0");
   } else {
     echo "<script> 
     alert('data gagal ditambahkan');
@@ -43,6 +50,25 @@ if ( isset($_POST["submit"])) {
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     
+    <style type="text/css">
+            .ab {
+            font-family: sans-serif;
+            font-size: 15px;
+            background: grey;
+            color: white;
+            border: white 3px solid;
+            border-radius: 5px;
+            padding: 12px 20px;
+            margin-top: 10px;
+            text-align: left;
+     }
+    .ab {
+        text-decoration: none;
+     }
+    .ab:hover{
+        opacity:0.9; 
+    }
+    </style>
 </head>
 
 <body>
@@ -65,13 +91,12 @@ if ( isset($_POST["submit"])) {
                 <li><a href="listAnime.php">MyAnime</a></li>
                 <li><a href="product.php">Product</a></li>
                 <li><a href="About.php">About</a></li>
-                <li>
-                    <?php if (!isset($_SESSION["login"])) { ?>
-                        <a href="login2.php">login</a>
-                    <?php } else { ?>
-                        <a href="logOut.php">Log Out</a>
+                <?php if (!isset($_SESSION["login"])) { ?>
+                <li><a href="login2.php">login</a></li>
+                        <?php } else { ?>
+                            <li><a href="crud_product.php">Add Product</a></li>  
+                            <li><a href="logOut.php">Log Out</a></li>    
                     <?php } ?>
-                </li>
             </ul>
         </nav>
 
@@ -123,7 +148,7 @@ if ( isset($_POST["submit"])) {
                  <p>toko : <a href="<?= $row['toko']; ?>" target="_blank">Click disini</a></p>
                 <br>
                
-                <button type="submit" name="delete">delete Data !</button>
+                  <a class="ab" href="delete.php?id<?= $row['id']; ?>">Hapus</a>
                 
             </div>
             <?php endforeach; ?>
