@@ -1,0 +1,531 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    background-color: #ddd;
+    font-size: 18px;
+    font-family: 'Roboto Mono', 'Rubik Moonrocks', 'Lobster', Arial, Helvetica, sans-serif, monospace, cursive;
+    margin: 50px;
+}
+
+.container {
+    display: grid;
+    gap: 10px;
+
+}
+
+
+/* Header */
+
+.header {
+    display: grid;
+    grid-template-areas:
+        'hero satu'
+        'hero dua';
+}
+
+.hero {
+    grid-area: hero;
+    min-height: 300px;
+    background-image: url(img2/hero.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 50px;
+}
+
+
+.hero>* {
+    display: none;
+
+}
+
+.fitur {
+    background-color:#aaa;
+    color: #fff;
+    display: grid;
+    /* justify-content: center;
+    align-content: center; 
+    ini sama denga place konten 
+    */
+    place-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.satu {
+    grid-area: satu;
+    background-image: url(img2/sp.png);
+    background-size: cover;
+    min-height: 150px;
+
+}
+
+.dua {
+    grid-area: dua;
+    background-image: url(img2/new.png);
+    background-size: cover;
+    min-height: 150px;
+
+
+}
+
+.fitur .price {
+    font-size: 2em;
+    font-weight: 150;
+}
+
+/* Navigation */
+
+.menu {
+    order: -1;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+}
+
+.menu .brand {
+    font-family: 'Lobster', cursive;
+    font-size: 1.7em;
+    color: #333;
+}
+
+.menu ul {
+
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    align-items: center;
+    gap: 5px;
+
+}
+
+.menu a {
+    display: block;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    padding: 5px;
+    font-size: 0.9em;
+    border: #000 solid 1px;
+    border-radius: 5px;
+}
+
+
+/* Hamburger Menu */
+
+.menu-toggle {
+    height: 20px;
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 999;
+}
+
+
+.menu-toggle span {
+    display: block;
+    background-color: #000;
+    width: 28px;
+    height: 3px;
+    border-radius: 3px;
+    transition: all 0.5s;
+}
+
+.menu-toggle input {
+    display: block;
+    position: absolute;
+    background-color: #000;
+    width: 40px;
+    height: 28px;
+    top: -5px;
+    left: -5px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* Hamburger Menu Animation */
+.menu-toggle span:nth-child(2) {
+    transform-origin: 0 0;
+}
+
+.menu-toggle span:nth-child(4) {
+    transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked~span:nth-child(2) {
+    background-color: #fff;
+    transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.menu-toggle input:checked~span:nth-child(4) {
+    background-color: #fff;
+    transform: rotate(-45deg) translate(-1px, 0);
+}
+
+.menu-toggle input:checked~span:nth-child(3) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* services */
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.service {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+
+.service .icon {
+    font-size: 2em;
+    text-align: center;
+
+}
+
+.service .icon img {
+   height: 250px;
+   width: 250px;
+
+    
+}
+
+
+.service h3 {
+    font-size: 1.2em;
+}
+
+.service p {
+    font-size: 0.8em;
+}
+
+.service form {
+    list-style: none;
+}
+
+.service image {
+
+}
+
+.service input[type=text], select {
+  width: 100%;
+  padding: 12px 21px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.service input[type=submit] {
+  width: 100%;
+  background-color: grey;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.service button {
+
+  background-color: grey; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+
+}
+
+.service button[type=submit]:hover {
+  background-color: grey;
+  opacity: 0.8;
+}
+
+.gallery {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 5px;
+}
+
+.gallery h2 {
+    grid-column: 1/-1;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.gallery2 {
+    text-align: center;
+    padding: 25px;
+
+}
+/* MyAnime fitur kemungkinan tidak terpakai*/
+
+.fitur1 {
+    background-color:#aaa;
+    color: #fff;
+    display: grid;
+    justify-content: start;    
+    max-width: 300;
+    text-align: right;
+    cursor: pointer;
+}
+
+
+/* CSS About */
+
+.footer-a {
+    display: grid;
+    margin-top: 3px;
+    height: 200px;
+    color: white;
+    background-color: #333333;
+    border-radius: 5px;
+    border: 1px solid #333333;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    
+  
+}
+
+.footer-a h2 {
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-a p {
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* text disable */
+.disable-select {
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+/* tombol */
+
+
+input[type=button],input[type=submit] {
+    font-family: sans-serif;
+    border-radius: 5px;
+    padding: 6px 10px;
+    margin-top: 10px;
+    color: #fff;
+    background-color: #444;
+
+}
+
+input[type=button]:hover, input[type=submit]:hover{
+    opacity:0.8;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 7px 14px;
+    margin: 6px 0;
+    display: inline-block;
+    box-sizing: border-box;
+    
+  }
+
+/* Login */
+
+
+
+.hero-login {
+    grid-area: hero;
+    min-height: 300px;
+    background-image: url(img2/a.gif);
+    background-size: cover;
+    background-position: center;
+    padding: 50px;
+    border: #aaa;
+    border-radius: 10px 0 0 10px ;
+}
+
+
+.hero-login>* {
+    display: grid;
+
+}
+
+
+.hero-login h1 {
+    display: none;
+
+}
+
+
+
+.hero-login input[type="text"], .hero-login input[type="password"], .hero-login input[type="password2"] {
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 3px solid white;
+    padding: 14px 10px;
+    width: 220px;
+    outline: none;
+    color: #ffff;
+    border-radius: 15px;
+
+  
+
+}
+
+.hero-login input[type="text"]:focus, .hero-login input[type="password"]:focus, .hero-login input[type="password2"]:focus {
+
+    width: 220px;
+    border-color: rgb(141, 190, 43);
+}
+
+.hero-login input[type="submit"] {
+    cursor: pointer;
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 3px solid white;
+    padding: 14px 10px;
+    outline: none;
+    color: #ffff;
+    border-radius: 20px;
+    transition: 0.25px;
+    cursor: pointer;
+
+}
+
+.hero-login input[type="submit"]:hover {
+    background: white;
+    color: black;
+
+}
+
+/* responsive breakpoint */
+
+/* HD */
+@media (max-width: 1024px) {
+    .menu {
+        order: inherit;
+        grid-template-columns: 1fr;
+    }
+
+    .menu .brand {
+        display: none;
+    }
+
+    .hero>* {
+        display: block;
+        background-color: #000;
+        color: #fff;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+
+    .hero-login h1 {
+        display: grid;
+        color: #aaa;
+    
+    }
+
+    .menu {
+        order: -1;
+        justify-items: end;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .menu ul {
+        display: flex;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        right: 0;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        z-index: 1;
+        background-color: #444;
+        transform: translateY(-100%);
+        transition: all 1s;
+        opacity: 0;
+      
+    }
+
+    .menu a {
+        background-color: #444;
+        border: none;
+        border-radius: none;
+
+    }
+
+    .menu ul.slide {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+
+    .hero-login {
+
+        border-radius: 10px 10px 0 0 ;
+    }
+
+
+    body {
+        margin: 15px;
+    }
+
+    .header {
+        grid-template-areas:
+            'hero'
+            'satu'
+            'dua';
+    }
+
+}
